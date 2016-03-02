@@ -32,7 +32,7 @@ public class Input
      * @param msg The message to be displayed.
      * @return single line string.
      */
-    public static String getUnsafeString(String msg)
+    public static final String getUnsafeString(String msg)
     {
         System.out.print(msg + " :");
         return scanner.nextLine();
@@ -47,7 +47,7 @@ public class Input
      * @param msg The message to be displayed.
      * @return Single line non empty string.
      */
-    public static String getString(String msg)
+    public static final String getString(String msg)
     {
         boolean haveString = false;
         String result = "";
@@ -75,7 +75,7 @@ public class Input
      * @param msg The message to be displayed.
      * @return Integer input.
      */
-    public static Integer getInteger(String msg)
+    public static final Integer getInteger(String msg)
     {
         boolean haveInt = false;
         Integer result = null;
@@ -104,7 +104,7 @@ public class Input
      * @param msg The message to be displayed.
      * @return Double input.
      */
-    public static Double getDouble(String msg)
+    public static final Double getDouble(String msg)
     {
         boolean haveInt = false;
         Double result = null;
@@ -133,7 +133,7 @@ public class Input
      * @param msg The message to be displayed.
      * @return Float input.
      */
-    public static Float getFloat(String msg)
+    public static final Float getFloat(String msg)
     {
         boolean haveInt = false;
         Float result = null;
@@ -165,7 +165,8 @@ public class Input
      * @param max The maximum value of the integer, inclusive.
      * @return The integer entered by the user between the min/max
      */
-    public static Integer getBoundInteger(String msg, int min, int max)
+    public static final Integer getBoundInteger(String msg, int min, int
+            max)
     {
         boolean haveInt = false;
         Integer result = null;
@@ -207,8 +208,8 @@ public class Input
      * @param max The maximum value of the double, inclusive.
      * @return The double entered by the user between the min/max
      */
-    public static Double getBoundDouble(String msg, double min, double
-            max)
+    public static final Double getBoundDouble(String msg, double min,
+                                              double max)
     {
         boolean haveDouble = false;
         Double result = null;
@@ -250,7 +251,7 @@ public class Input
      * @param max The maximum value of the float, inclusive.
      * @return The float entered by the user between the min/max
      */
-    public static Float getBoundFloat(String msg, float min, float
+    public static final Float getBoundFloat(String msg, float min, float
             max)
     {
 

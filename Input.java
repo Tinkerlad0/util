@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Utility Class for receiving input from the user in cli applications.
  *
  * @author michael  1/03/16.
- * @version 0.0.1
+ * @version 1.0.2
  */
 @SuppressWarnings("Duplicates")
 public class Input
@@ -187,10 +187,6 @@ public class Input
                 {
                     haveInt = true;
                 }
-            } catch (NumberFormatException nfe)
-            {
-                System.out.println("That wasnt an integer, please try " +
-                        "again");
             } catch (IndexOutOfBoundsException ioobe)
             {
                 System.out.println(ioobe.getMessage());
@@ -202,7 +198,7 @@ public class Input
     /**
      * Displays a message then gets a double input that is between the
      * specified minimum and maximum limits. Will continue asking until
-     * the input is an integer and satisfies the min/max bounds.
+     * the input is a double and satisfies the min/max bounds.
      * <p>
      * Format "message :input"
      *
@@ -214,7 +210,6 @@ public class Input
     public static Double getBoundDouble(String msg, double min, double
             max)
     {
-
         boolean haveDouble = false;
         Double result = null;
 
@@ -235,10 +230,6 @@ public class Input
                 {
                     haveDouble = true;
                 }
-            } catch (NumberFormatException nfe)
-            {
-                System.out.println("That wasn't a double, please try " +
-                        "again");
             } catch (IndexOutOfBoundsException ioobe)
             {
                 System.out.println(ioobe.getMessage());
@@ -247,4 +238,69 @@ public class Input
         return result;
     }
 
+    /**
+     * Displays a message then gets a float input that is between the
+     * specified minimum and maximum limits. Will continue asking until
+     * the input is a float and satisfies the min/max bounds.
+     * <p>
+     * Format "message :input"
+     *
+     * @param msg The message to be displayed.
+     * @param min The minimum value of the float, inclusive.
+     * @param max The maximum value of the float, inclusive.
+     * @return The float entered by the user between the min/max
+     */
+    public static Float getBoundFloat(String msg, float min, float
+            max)
+    {
+
+        boolean haveFloat = false;
+        Float result = null;
+
+        while (!haveFloat)
+        {
+            try
+            {
+                result = getFloat(msg);
+                if (result < min)
+                {
+                    throw new IndexOutOfBoundsException("Input was less " +
+                            "than min of " + min);
+                } else if (result > max)
+                {
+                    throw new IndexOutOfBoundsException("Input was " +
+                            "greater than max of " + max);
+                } else
+                {
+                    haveFloat = true;
+                }
+            } catch (IndexOutOfBoundsException ioobe)
+            {
+                System.out.println(ioobe.getMessage());
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Main entry point for this program. However only to be used for
+     * testing. Will run through all of the utilities and allow them to
+     * be tested.
+     */
+    public static void main(String[] args)
+    {
+        System.out.println("Unsafe String " + getUnsafeString("Unsafe " +
+                "String Entry") + '\n');
+        System.out.println("Unsafe String " + getUnsafeString("Unsafe " +
+                "String Entry") + '\n');
+        System.out.println("String " + getString("String") + '\n');
+        System.out.println("Integer " + getInteger("Integer") + '\n');
+        System.out.println("Double " + getDouble("Double") + '\n');
+        System.out.println("BoundInteger " + getBoundInteger("Integer " +
+                "1/10", 1, 10) + '\n');
+        System.out.println("BoundDouble " + getBoundDouble("Double 1" +
+                ".2/5.6", 1.2d, 5.6d) + '\n');
+        System.out.println("Bound Float " + getBoundFloat("Float 1.2/5" +
+                ".6", 1.2f, 5.6f));
+    }
 }

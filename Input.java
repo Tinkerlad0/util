@@ -283,6 +283,30 @@ public class Input
         return result;
     }
 
+    public static boolean getBoolean(String msg)
+    {
+        boolean haveResult = false;
+
+        while (!haveResult)
+        {
+            String strTemp = getString(msg);
+
+            switch (strTemp)
+            {
+                case "yes":
+                case "true":
+                    return true;
+                case "no":
+                case "false":
+                    return false;
+                default:
+                    System.out.println("Not a valid response, please " +
+                            "enter yes/no or true/false");
+            }
+        }
+        return false;
+    }
+
     /**
      * Main entry point for this program. However only to be used for
      * testing. Will run through all of the utilities and allow them to
